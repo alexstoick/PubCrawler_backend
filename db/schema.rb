@@ -11,7 +11,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131101234855) do
+ActiveRecord::Schema.define(:version => 20131108110311) do
+
+  create_table "place_attr_types", :force => true do |t|
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "place_attrs", :force => true do |t|
+    t.integer  "place_id"
+    t.integer  "place_attr_type"
+    t.string   "value"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "place_rating_entries", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "place_id"
+    t.string   "comment"
+    t.integer  "rating"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "places", :force => true do |t|
+    t.string   "name"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.integer  "rating"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "user_attr_types", :force => true do |t|
     t.string   "name"
