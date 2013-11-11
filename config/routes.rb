@@ -15,4 +15,5 @@ PubCrawlBackend::Application.routes.draw do
 	match 'event/', :to => "event#index", :via => :get
 	match 'event/', :to => "event#create", :via => :post
 
+	match 'generate/' , :to => "crawl_generator#index", :via => :get
 end
