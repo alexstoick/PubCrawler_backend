@@ -11,20 +11,41 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131108110311) do
+ActiveRecord::Schema.define(:version => 20131110203512) do
+
+  create_table "event_modifiers", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "event_types", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.integer  "event_type_id"
+    t.integer  "event_modifier_id"
+    t.integer  "event_modifier_value"
+    t.integer  "place_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
 
   create_table "place_attr_types", :force => true do |t|
-    t.string   "type"
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "place_attrs", :force => true do |t|
     t.integer  "place_id"
-    t.integer  "place_attr_type"
+    t.integer  "place_attr_type_id"
     t.string   "value"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "place_rating_entries", :force => true do |t|
